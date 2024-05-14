@@ -7,7 +7,7 @@ pipeline {
                 sh 'ls -ltr'
                 // Run Maven inside a Docker container
                 script {
-                    def projectDir = "${env.WORKSPACE}/spring-boot-app"
+                    def projectDir = "${env.WORKSPACE}/java-maven-sonar-argocd-helm-k8s/spring-boot-app"
                     docker.image('maven:3.8.3-openjdk-11-slim').inside("-v ${projectDir}:/usr/src/mymaven -w /usr/src/mymaven") {
                         sh 'mvn clean package'
                     }

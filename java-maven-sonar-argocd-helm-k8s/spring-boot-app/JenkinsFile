@@ -58,6 +58,7 @@ pipeline {
 
             // Add the updated deployment.yml to Git index
             sh 'git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml'
+            sh 'git add -u'
 
             // Check if there are changes to be committed
             def gitDiff = sh(returnStatus: true, script: 'git diff --cached')

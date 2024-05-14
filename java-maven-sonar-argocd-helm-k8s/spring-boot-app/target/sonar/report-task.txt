@@ -2,5 +2,5 @@ projectKey=com.sayooj:spring-boot-demo
 serverUrl=http://192.168.56.102:9000
 serverVersion=9.0.1.46107
 dashboardUrl=http://192.168.56.102:9000/dashboard?id=com.sayooj%3Aspring-boot-demo
-ceTaskId=AY94HqrZiwuMu-xDo4dw
-ceTaskUrl=http://192.168.56.102:9000/api/ce/task?id=AY94HqrZiwuMu-xDo4dw
+ceTaskId=AY94JGZRiwuMu-xDo4dx
+ceTaskUrl=http://192.168.56.102:9000/api/ce/task?id=AY94JGZRiwuMu-xDo4dx

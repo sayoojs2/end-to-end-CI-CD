@@ -6,6 +6,15 @@ pipeline {
     }
   }
   stages {
+    stage('Clone Repository') {
+      steps {
+        withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+          sh '''
+            git clone https://$GITHUB_TOKEN@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+          '''
+       }
+    }
+}
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'

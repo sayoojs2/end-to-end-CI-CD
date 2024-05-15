@@ -26,7 +26,6 @@ pipeline {
     stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "sayoojs2/jenkins:${BUILD_NUMBER}"
-        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('dockerhub')
       }
       steps {
@@ -50,6 +49,8 @@ pipeline {
             sh '''
               git config user.email "sayooj.s2@gmail.com"
               git config user.name "sayoojs2"
+              chown -R $(whoami):$(whoami) .git
+              chmod -R u+w .git
               replaceImageTag=$(sed -n 's/.*image: [^:]*:\\([^ ]*\\).*/\\1/p' java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml)
               sed -i "s/${replaceImageTag}/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
               git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
